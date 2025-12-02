@@ -128,6 +128,92 @@ class EventHandler {
     return parseInt(value1) % parseInt(value2)
   }
 
+  sin(value) {
+      return Math.sin(parseFloat(value))
+  }
+
+  cos(value) {
+    return Math.cos(parseFloat(value))
+  }
+
+  trigSin(value, sinType) {
+    let hyperbolic = ['hyperbolic', 'sinh']
+    let inverse = ['inverse', 'arc', 'asin']
+    let hyperbolicInverse = ['hyperbolicinverse', 'asinh', 'hyperbolicarc']
+
+    let type = ''
+    
+    if (sinType) {
+      type = sinType.toLowerCase().replaceAll('_','').replaceAll(' ','')
+    }
+    
+    if (hyperbolic.includes(type)) {
+      return Math.sinh(parseFloat(value))
+    }
+    
+    if (inverse.includes(type)) {
+      return Math.asin(parseFloat(value))
+    }
+    
+    if (hyperbolicInverse.includes(type)) {
+      return Math.asinh(parseFloat(value))
+    }
+
+    return Math.
+  }
+
+  trigCos(value, cosType) {
+    let hyperbolic = ['hyperbolic', 'cosh', 'hyperboliccos', 'hyperboliccosine']
+    let inverse = ['inverse', 'arc', 'acos', 'arccos', 'arccosine']
+    let hyperbolicInverse = ['hyperbolicinverse', 'acosh', 'hyperbolicarc', 'arccosh']
+
+    let type = ''
+    
+    if (cosType) {
+      type = sinType.toLowerCase().replaceAll('_','').replaceAll(' ','')
+    }
+    
+    if (hyperbolic.includes(type)) {
+      return Math.cosh(parseFloat(value))
+    }
+    
+    if (inverse.includes(type)) {
+      return Math.acos(parseFloat(value))
+    }
+    
+    if (hyperbolicInverse.includes(type)) {
+      return Math.acosh(parseFloat(value))
+    }
+
+    return Math.cos(value)
+  }
+
+  trigTan(value, tanType) {
+    let hyperbolic = ['hyperbolic', 'tanh', 'hyperbolictan', 'hyperbolictangent']
+    let inverse = ['inverse', 'arc', 'atan', 'arctan', 'arctangent']
+    let hyperbolicInverse = ['hyperbolicinverse', 'atanh', 'hyperbolicarc', 'arctanh']
+
+    let type = ''
+    
+    if (sinType) {
+      type = sinType.toLowerCase().replaceAll('_','').replaceAll(' ','')
+    }
+    
+    if (inverse.includes(type)) {
+      return Math.acos(parseFloat(value))
+    }
+    
+    if (hyperbolicInverse.includes(type)) {
+      return Math.acosh(parseFloat(value))
+    }
+
+    return Math.tan(value)
+  }
+
+  atan2(value2, value1) {
+    return Math.atan2(value2, value1)
+  }
+  
   length(value) {
     return value.toString().length
   }
@@ -1005,7 +1091,11 @@ class EventHandler {
       "$round",
       "$modulo",
       "$isLoggedIn",
-      "$getEquipId"
+      "$getEquipId",
+      "$trigCos",
+      "$trigSin",
+      "$trigTan",
+      "$atan2"
     ]
   }
 
@@ -1045,7 +1135,11 @@ class EventHandler {
       "$round": true,
       "$modulo": true,
       "$isLoggedIn": true,
-      "$getEquipId": true
+      "$getEquipId": true,
+      "$trigCos": true,
+      "$trigTan": true,
+      "$trigSin": true,
+      "$atan2": true
     }
   }
 
